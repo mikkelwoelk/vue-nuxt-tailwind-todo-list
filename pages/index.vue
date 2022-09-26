@@ -29,6 +29,7 @@
                 :class="{ pendingSubmit: newTodo.title !== '' }"
             >
                 <form @submit.prevent="addTodo">
+                    <label for="todoTitle"></label>
                     <input
                         type="text"
                         name="todoTitle"
@@ -38,6 +39,7 @@
                         required
                         v-model.trim="newTodo.title"
                     />
+                    <label for="todoDesc"></label>
                     <input
                         type="text"
                         name="todoDesc"
@@ -46,7 +48,8 @@
                         maxlength="200"
                         v-model.trim="newTodo.description"
                     />
-                    <div id="c-form__radio-container">
+                    <label for="importance"></label>
+                    <fieldset id="c-form__radio-container" name="importance">
                         <input
                             class="importance-radio"
                             type="radio"
@@ -72,7 +75,8 @@
                             style="background-color: rgb(200, 65, 65)"
                             @change="onImportanceChange($event, 'red', 3)"
                         />
-                    </div>
+                    </fieldset>
+                    <label for="deadline"></label>
                     <input
                         type="datetime-local"
                         name="deadline"
@@ -315,7 +319,7 @@ form {
     border-radius: 10px;
     overflow: hidden;
     max-height: 50.5px;
-    transition: max-height ease-in-out 1s;
+    transition: max-height ease-in-out 0.5s;
 }
 
 #c-form__container input {
