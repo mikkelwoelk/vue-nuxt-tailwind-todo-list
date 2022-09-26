@@ -286,6 +286,7 @@ body {
 #app-logo {
     width: max(20rem, 100px);
     margin: 0 auto;
+    border: none;
 }
 
 h1,
@@ -313,7 +314,7 @@ form {
     box-shadow: 0px 0px 20px var(--clr-accent-darkest);
     border-radius: 10px;
     overflow: hidden;
-    max-height: 51px;
+    max-height: 50.5px;
     transition: max-height ease-in-out 1s;
 }
 
@@ -324,6 +325,8 @@ form {
     outline-color: var(--clr-accent-light);
     outline-style: solid;
     color: var(--clr-text);
+    font-size: 1.5rem;
+    line-height: 1;
 }
 
 #c-form__container input::placeholder {
@@ -336,11 +339,11 @@ form {
 }
 
 #c-form__container.pendingSubmit {
-    max-height: 280px;
+    max-height: 278px;
 }
 
 #c-form__container:focus-within {
-    max-height: 280px;
+    max-height: 278px;
 }
 
 #c-form__radio-container {
@@ -398,6 +401,7 @@ form {
 
 #c-form__submit-btn {
     padding: 2rem;
+    font-size: 1.5rem;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     background-color: var(--clr-accent-darkest);
@@ -407,6 +411,7 @@ form {
     outline-color: var(--clr-accent-light);
     outline-style: solid;
     text-transform: uppercase;
+    line-height: 1;
 }
 
 #c-form__submit-btn.isActive {
@@ -443,6 +448,7 @@ form {
 }
 
 .c-delete-prompt button {
+    font-size: 1.5rem;
     padding: 1rem 1.5rem;
     border-radius: 5px;
     color: var(--clr-text);
@@ -469,6 +475,7 @@ form {
 
 #c-todo-filter__button-container button {
     padding: 1rem 2rem;
+    font-size: 1.5rem;
     color: var(--clr-text);
     background-color: var(--clr-primary);
     border-radius: 10px;

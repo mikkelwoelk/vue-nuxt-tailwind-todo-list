@@ -150,12 +150,12 @@ export default {
 }
 
 .c-todo-item.isExpanded {
-    height: 160px;
+    height: 182px;
 }
 
 .c-todo-item.isEditing {
-    height: 160px;
-    box-shadow: 0px 0px 20px var(--clr-secondary);
+    height: 182px;
+    box-shadow: 0px 0px 20px var(--clr-accent-light);
     animation: edit-mode-active 1.5s infinite;
 }
 
@@ -217,18 +217,17 @@ export default {
 
 .c-todo-item__header-container {
     display: grid;
-    grid-template-columns: 3.5fr 0.5fr;
+    grid-template-columns: 4fr 0.5fr;
     gap: 1rem;
     align-items: center;
     justify-content: space-between;
 }
 
 .c-todo-item__header-wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 2.4fr 1fr;
+    gap: 2rem;
     align-items: center;
-    gap: 1rem;
 }
 
 .c-todo-item__title,
@@ -241,7 +240,6 @@ export default {
 .c-todo-item__date {
     font-size: 1.2rem;
     justify-self: start;
-    padding: 0 1rem;
 }
 
 .c-todo-item__date-editing {
@@ -260,6 +258,7 @@ export default {
 
 .c-todo-item__date-editing[type='datetime-local']::after {
     content: url('https://api.iconify.design/akar-icons/calendar.svg?color=white');
+    line-height: 0.5;
 }
 
 .c-todo-item__checkbox-container {
@@ -310,7 +309,7 @@ export default {
     scale: 2.2;
     rotate: -12deg;
     opacity: 1;
-    transform: translate(1px, -0.5px);
+    transform: translate(1px, 0.5px);
 }
 
 .c-todo-item__checkbox[type='checkbox']:checked ~ .c-todo-item__overlay {
@@ -341,7 +340,7 @@ export default {
     text-align: left;
     margin-left: 5px;
     font-size: 1.2rem;
-    height: 6rem;
+    height: 8.5rem;
     padding-top: 5px;
 }
 
@@ -353,8 +352,16 @@ export default {
     padding: 5px 5px 5px 0;
 }
 
+.c-todo-item__title,
 .c-todo-item__title-editing {
     font-weight: 700;
+    padding: 0;
+}
+
+.c-todo-item__date-editing {
+    background: linear-gradient(90deg, #4ea69986, transparent);
+    color: var(--clr-text);
+    padding: 6px 5px 7px 5px;
 }
 
 .c-todo-item__button-container {
