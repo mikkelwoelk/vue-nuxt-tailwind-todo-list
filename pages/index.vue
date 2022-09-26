@@ -176,7 +176,7 @@ export default {
         }
     },
     methods: {
-        // Object that stores functinos
+        // Object that stores functions
         addTodo() {
             // Adds a new todo object to the todos array, as well as getting and setting the date/time from the date picker into the todoDate. Then resets the inputs for the next todo (except the importance)
             this.newTodo.date = moment(this.newTodo.date).fromNow() // Sets the date/time of the todo to the user selected input and shows the time till its due
