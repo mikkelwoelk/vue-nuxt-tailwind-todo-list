@@ -106,7 +106,6 @@
                         name="t-fade-in"
                         enter-active-class="fade-from-left"
                         leave-active-class="scale-out"
-                        appear
                     >
                         <todoItem
                             v-for="(todo, index) in todos"
