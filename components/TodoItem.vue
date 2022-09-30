@@ -213,6 +213,7 @@ export default {
     opacity: 0;
     transition: ease-in-out 0.25s;
     margin: 6px -1px 0 0;
+    pointer-events: none;
 }
 
 .c-todo-item__checkbox:checked::after {
@@ -220,6 +221,7 @@ export default {
     rotate: -12deg;
     opacity: 1;
     transform: translate(1px, 0.5px);
+    cursor: pointer;
 }
 
 .c-todo-item__separation-line {
