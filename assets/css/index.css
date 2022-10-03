@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+    body {
+        @apply flex flex-col justify-center items-center;
+    }
     h1,
     h2,
     h3,
