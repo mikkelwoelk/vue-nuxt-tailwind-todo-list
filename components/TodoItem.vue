@@ -154,7 +154,7 @@ export default {
 
 <style scoped>
 .c-todo-item--importance-green {
-    background: rgb(111, 200, 65);
+    @apply bg-[rgb(111,_200,_65)];
     background: linear-gradient(
         90deg,
         rgba(111, 200, 65, 1) 0%,
@@ -163,7 +163,7 @@ export default {
 }
 
 .c-todo-item--importance-yellow {
-    background: rgb(197, 200, 65);
+    @apply bg-[rgb(197,_200,_65)];
     background: linear-gradient(
         90deg,
         rgba(197, 200, 65, 0.8491771708683473) 0%,
@@ -172,7 +172,7 @@ export default {
 }
 
 .c-todo-item--importance-red {
-    background: rgb(200, 65, 65);
+    @apply bg-[rgb(200,_65,_65)];
     background: linear-gradient(
         90deg,
         rgba(200, 65, 65, 0.8491771708683473) 0%,
@@ -180,48 +180,33 @@ export default {
     );
 }
 
-.c-todo-item__date-editing::-webkit-calendar-picker-indicator {
-    cursor: pointer;
-    position: absolute;
-    padding: 0;
-    width: 100%;
-    height: 100%;
+.c-todo-item__date-editing[type='datetime-local']::-webkit-calendar-picker-indicator {
+    @apply cursor-pointer absolute p-0 w-full h-full;
     color: transparent;
     background: transparent;
 }
 
 .c-todo-item__date-editing::after {
     content: url('https://api.iconify.design/akar-icons/calendar.svg?color=white');
-    line-height: 0.5;
+    @apply leading-[0.5];
 }
 
 .c-todo-item__checkbox::before {
-    position: absolute;
+    @apply absolute w-6 h-6 -right-1.5 -top-1.5 rounded-3xl;
     content: '';
-    width: 12px;
-    height: 14px;
     background-color: var(--clr-secondary);
-    right: -4px;
-    top: -4px;
-    border-radius: 50px;
 }
 
 .c-todo-item__checkbox::after {
     content: url('https://api.iconify.design/bi/check.svg?color=white');
-    scale: 0;
-    rotate: -45deg;
-    opacity: 0;
-    transition: ease-in-out 0.25s;
-    margin: 6px -1px 0 0;
-    pointer-events: none;
+    @apply scale-0 -rotate-45 opacity-0 m-[6px_-1px_0_0] pointer-events-none transition-all ease-in-out duration-300;
 }
 
 .c-todo-item__checkbox:checked::after {
+    @apply opacity-100 cursor-pointer;
     scale: 2.2;
     rotate: -12deg;
-    opacity: 1;
     transform: translate(1px, 0.5px);
-    cursor: pointer;
 }
 
 .c-todo-item__separation-line {
@@ -235,23 +220,16 @@ export default {
 }
 
 .c-todo-item__edit-checkbox::before {
-    position: absolute;
+    @apply absolute w-6 h-6 -right-1.5 -top-1.5 rounded-3xl;
     content: '';
-    width: 12px;
-    height: 14px;
     background-color: var(--clr-secondary);
-    right: -4px;
-    top: -4px;
-    border-radius: 50px;
 }
 
 .c-todo-item__edit-checkbox::after {
+    @apply opacity-100 transition-all ease-in-out duration-300 m-[6px_-1px_0_0];
     content: url('https://api.iconify.design/humbleicons/pencil.svg?color=white');
     scale: 1.5;
-    opacity: 1;
-    transition: ease-in-out 0.25s;
-    margin: 6px -1px 0 0;
-    transform: translate(3.5px, -4.5px);
+    transform: translate(3px, -4.5px);
 }
 
 .c-todo-item__edit-checkbox:checked::after {
