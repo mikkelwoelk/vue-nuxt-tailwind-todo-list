@@ -280,10 +280,6 @@ html {
 
 body {
     background-color: var(--clr-primary);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 * {
