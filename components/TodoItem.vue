@@ -1,6 +1,6 @@
 <template>
     <li
-        class="c-todo-item w-full max-h-32 p-8 pt-9 mt-4 mb-4 rounded-xl overflow-hidden relative flex flex-col transition-all duration-300"
+        class="c-todo-item w-full max-h-[77px] p-8 pt-9 mt-4 mb-4 rounded-xl overflow-hidden relative flex flex-col transition-all duration-300"
         :class="{
             'c-todo-item--importance-green': importance.color === 'green',
             'c-todo-item--importance-yellow': importance.color === 'yellow',
