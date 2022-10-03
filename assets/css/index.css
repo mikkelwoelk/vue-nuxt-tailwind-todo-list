@@ -10,6 +10,7 @@
     h4,
     h5,
     h6,
+    span,
     button,
     time,
     input,
@@ -19,5 +20,8 @@
     }
     button {
         @apply cursor-pointer;
+    }
+    * {
+        @apply m-0 p-0 border-none box-border;
     }
 }
