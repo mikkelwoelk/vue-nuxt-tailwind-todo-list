@@ -1,11 +1,26 @@
 <template>
-    <div id="app">
+    <div class="app text-center w-[min(90%,_500px)] m-auto">
         <transition name="t-fade-up">
-            <div v-if="showDelete" class="c-delete-prompt">
-                <span>Are you sure you want to delete this todo?</span>
-                <div class="c-delete-prompt__button-wrapper">
-                    <button @click="() => deleteTodo()">I'm sure</button>
-                    <button @click="() => toggleDeletePrompt()">
+            <div
+                v-if="showDelete"
+                class="c-delete-prompt max-w-sm mx-2 p-8 rounded-xl fixed flex flex-col justify-between bg-[var(--clr-primary)] z-50 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-full"
+            >
+                <span class="text-3xl mb-4"
+                    >Are you sure you want to delete this todo?</span
+                >
+                <div
+                    class="c-delete-prompt__button-wrapper flex justify-between mx-2"
+                >
+                    <button
+                        class="text-2xl py-4 px-6 rounded-md transition-all duration-150 hover:translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[-2px_2px_0px_1px_#1f363d]"
+                        @click="() => deleteTodo()"
+                    >
+                        I'm sure
+                    </button>
+                    <button
+                        class="text-2xl py-4 px-6 rounded-md transition-all duration-150 hover:translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[-2px_2px_0px_1px_#1f363d]"
+                        @click="() => toggleDeletePrompt()"
+                    >
                         Hell no!
                     </button>
                 </div>
@@ -15,25 +30,25 @@
             class="app-wrapper"
             :class="[showDelete ? blurClass : '', bbClass]"
         >
-            <div id="c-header__container">
+            <div class="c-header__container">
                 <img
                     src="../static/logo.png"
-                    id="app-logo"
+                    class="app-logo w-[max(20rem,_100px)] m-auto border-none"
                     alt="Todo list clipboard"
                 />
-                <h1>{{ header }}</h1>
-                <h2>{{ subheader }}</h2>
+                <h1 class="font-normal text-7xl">{{ header }}</h1>
+                <h2 class="font-normal text-4xl">{{ subheader }}</h2>
             </div>
             <div
-                id="c-form__container"
-                :class="{ pendingSubmit: newTodo.title !== '' }"
+                class="c-form__container my-8 rounded-xl overflow-hidden max-h-[50.5px] transition-[max-height] ease-in-out duration-500"
+                :class="{ 'max-h-[278px]': newTodo.title !== '' }"
             >
-                <form @submit.prevent="addTodo">
+                <form class="flex flex-col" @submit.prevent="addTodo">
                     <label for="todoTitle"></label>
                     <input
                         type="text"
                         name="todoTitle"
-                        id="c-form__title-input"
+                        class="c-form__title-input"
                         placeholder="Add a new Todo"
                         maxlength="25"
                         required
@@ -43,13 +58,16 @@
                     <input
                         type="text"
                         name="todoDesc"
-                        id="c-form__description-input"
+                        class="c-form__description-input"
                         placeholder="Describe it further if needed.."
                         maxlength="200"
                         v-model.trim="newTodo.description"
                     />
                     <label for="importance"></label>
-                    <fieldset id="c-form__radio-container" name="importance">
+                    <fieldset
+                        class="c-form__radio-container grid grid-cols-3"
+                        name="importance"
+                    >
                         <input
                             class="importance-radio"
                             type="radio"
@@ -80,11 +98,11 @@
                     <input
                         type="datetime-local"
                         name="deadline"
-                        id="c-form__deadline-input"
+                        class="c-form__deadline-input relative"
                         v-model="newTodo.date"
                     />
                     <button
-                        id="c-form__submit-btn"
+                        class="c-form__submit-btn p-[2.2rem_2rem_1.8rem] text-2xl rounded-b-xl bg-[var(--clr-primary)] text-[var(--clr-secondary)] transition-all ease duration-500 uppercase outline outline-[var(--clr-secondary)]"
                         type="submit"
                         :class="[newTodo.title ? activeClass : '']"
                     >
@@ -92,16 +110,24 @@
                     </button>
                 </form>
             </div>
-            <div id="c-todos-container">
-                <div id="c-todo-filter__button-container">
-                    <button @click="sortImportanceLow">
+            <div class="c-todos-container">
+                <div
+                    class="c-todo-filter__button-container flex justify-between items-center"
+                >
+                    <button
+                        class="text-2xl py-4 px-8 rounded-xl transition-all duration-150 hover:translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[-2px_2px_0px_1px_#1f363d]"
+                        @click="sortImportanceLow"
+                    >
                         Sort importance: Low
                     </button>
-                    <button @click="sortImportanceHigh">
+                    <button
+                        class="text-2xl py-4 px-8 rounded-xl transition-all duration-150 hover:translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[-2px_2px_0px_1px_#1f363d]"
+                        @click="sortImportanceHigh"
+                    >
                         Sort importance: High
                     </button>
                 </div>
-                <ul id="c-todo-list">
+                <ul class="c-todo-list list-none flex flex-col">
                     <transition-group
                         name="t-fade-in"
                         enter-active-class="fade-from-left"
@@ -170,8 +196,8 @@ export default {
             dateTime: '', // Empty string for storing the date and time (updateTime() updates the date/time in the date picker every minute)
             showDelete: false,
             deletingIndex: null,
-            bbClass: 'backgroundBlur',
-            blurClass: 'blur',
+            bbClass: 'transition-all duration 250ms',
+            blurClass: 'opacity-50 pointer-events-none blur-sm',
         }
     },
     methods: {
@@ -238,13 +264,13 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap');
 :root {
-    --clr-primary: #00485e;
-    --clr-secondary: #d600cf;
+    --clr-primary: #cfe0c3;
+    --clr-secondary: #9ec1a3;
     --clr-text: #ffffff;
     --clr-text-placeholder: #e6e6e6;
     --clr-accent-light: #50ddc8;
     --clr-accent-darker: #52c9b7;
-    --clr-accent-darkest: #4ea699;
+    --clr-accent-darkest: #1f363d;
 }
 
 html {
@@ -262,99 +288,28 @@ body {
 
 * {
     font-family: 'Josefin Sans', sans-serif;
-    margin: 0;
-    padding: 0;
-    border: none;
-    box-sizing: border-box;
-}
-
-/** App styles */
-#app {
-    text-align: center;
-    color: #2c3e50;
-    width: min(90%, 500px);
-    margin: 0 auto;
-}
-
-.backgroundBlur {
-    transition: all 0.25s;
-}
-
-.blur {
-    filter: blur(2px);
-    opacity: 0.5;
-}
-
-/** Header section styles */
-#app-logo {
-    width: max(20rem, 100px);
-    margin: 0 auto;
-    border: none;
-}
-
-h1,
-h2 {
-    font-weight: normal;
-    color: var(--clr-text);
-}
-
-h1 {
-    font-size: 5rem;
-}
-
-h2 {
-    font-size: 2rem;
 }
 
 /** Form section styles */
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-#c-form__container {
-    margin: 2rem 0;
-    box-shadow: 0px 0px 20px var(--clr-accent-darkest);
-    border-radius: 10px;
-    overflow: hidden;
-    max-height: 50.5px;
-    transition: max-height ease-in-out 0.5s;
-}
-
-#c-form__container input {
+.c-form__container input {
     padding: 2rem 2rem;
-    border-bottom: 1px solid var(--clr-accent-darker);
-    background-color: var(--clr-accent-darkest);
-    outline-color: var(--clr-accent-light);
+    background-color: var(--clr-secondary);
+    outline-color: var(--clr-primary);
     outline-style: solid;
     color: var(--clr-text);
     font-size: 1.5rem;
     line-height: 1;
 }
 
-#c-form__container input::placeholder {
-    color: var(--clr-text-placeholder);
+.c-form__container input::placeholder {
+    color: var(--clr-primary);
 }
 
-#c-form__title-input {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-#c-form__container.pendingSubmit {
+.c-form__container:focus-within {
     max-height: 278px;
 }
 
-#c-form__container:focus-within {
-    max-height: 278px;
-}
-
-#c-form__radio-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-}
-
-#c-form__radio-container input[type='radio'] {
+.c-form__radio-container input {
     appearance: none;
     width: 100%;
     height: 5rem;
@@ -363,7 +318,7 @@ form {
     cursor: pointer;
 }
 
-#c-form__radio-container input[type='radio']::after {
+.c-form__radio-container input::after {
     content: url('https://api.iconify.design/eva/checkmark-circle-outline.svg?color=white');
     scale: 0;
     rotate: 180deg;
@@ -372,25 +327,21 @@ form {
     margin-top: 5px;
 }
 
-#c-form__radio-container input[type='radio']:checked::after {
+.c-form__radio-container input:checked::after {
     scale: 2;
     rotate: 0deg;
     opacity: 1;
 }
 
-#c-form__deadline-input::selection {
+.c-form__deadline-input::selection {
     background-color: transparent;
 }
 
-#c-form__deadline-input[type='datetime-local'] {
-    position: relative;
-}
-
-#c-form__deadline-input[type='datetime-local']::after {
+.c-form__deadline-input::after {
     content: url('https://api.iconify.design/akar-icons/calendar.svg?color=white');
 }
 
-#c-form__deadline-input[type='datetime-local']::-webkit-calendar-picker-indicator {
+.c-form__deadline-input::-webkit-calendar-picker-indicator {
     cursor: pointer;
     position: absolute;
     top: 0;
@@ -402,61 +353,23 @@ form {
     background: transparent;
 }
 
-#c-form__submit-btn {
-    padding: 2rem;
-    font-size: 1.5rem;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    background-color: var(--clr-accent-darkest);
-    transition: background-color ease 0.5s;
-    color: #fff;
-    cursor: pointer;
-    outline-color: var(--clr-accent-light);
-    outline-style: solid;
-    text-transform: uppercase;
-    line-height: 1;
+.c-form__submit-btn {
+    box-shadow: inset 0px 1px 8px 3px var(--clr-secondary);
 }
 
-#c-form__submit-btn.isActive {
-    background-color: var(--clr-accent-darker);
+.c-form__submit-btn.isActive {
+    box-shadow: inset 0px 0px 8px 30px var(--clr-secondary);
+    color: var(--clr-text);
 }
 
 /** Todo section styles */
-
 .c-delete-prompt {
-    position: fixed;
-    width: 25rem;
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
     background-color: var(--clr-primary);
-    border-radius: 10px;
-    z-index: 100;
-    left: 50%;
-    top: 50%;
-    translate: -50% -100%;
-    box-shadow: 0px 0px 20px var(--clr-accent-darkest);
-}
-
-.c-delete-prompt span {
-    color: var(--clr-text);
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.c-delete-prompt .c-delete-prompt__button-wrapper {
-    margin: 0 0.5rem;
-    display: flex;
-    justify-content: space-between;
+    box-shadow: inset 0px 0px 10px 0px var(--clr-accent-darkest);
 }
 
 .c-delete-prompt button {
-    font-size: 1.5rem;
-    padding: 1rem 1.5rem;
-    border-radius: 5px;
-    color: var(--clr-text);
-    background-color: var(--clr-accent-darkest);
-    cursor: pointer;
+    background-color: var(--clr-secondary);
 }
 
 .t-fade-up-enter-active,
@@ -467,29 +380,11 @@ form {
 .t-fade-up-enter,
 .t-fade-up-leave-to {
     opacity: 0;
-    translate: -50% 50%;
+    transform: translate(-50%, 50%);
 }
 
-#c-todo-filter__button-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#c-todo-filter__button-container button {
-    padding: 1rem 2rem;
-    font-size: 1.5rem;
-    color: var(--clr-text);
-    background-color: var(--clr-primary);
-    border-radius: 10px;
-    box-shadow: 0px 0px 20px var(--clr-accent-darkest);
-    cursor: pointer;
-}
-
-#c-todo-list {
-    list-style-type: none;
-    display: flex;
-    flex-direction: column;
+.c-todo-filter__button-container button {
+    background-color: var(--clr-secondary);
 }
 
 .fade-from-left {
