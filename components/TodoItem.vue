@@ -38,7 +38,7 @@
                 />
                 <time
                     v-if="!isEditing"
-                    class="c-todo-item__date text-xl justify-self-start mt-0.5"
+                    class="c-todo-item__date text-xl justify-self-start mt-0.5 leading-[1]"
                     >Due {{ date }}</time
                 >
                 <input
