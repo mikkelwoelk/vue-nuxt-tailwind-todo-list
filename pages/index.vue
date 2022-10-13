@@ -30,7 +30,7 @@
             class="app-wrapper"
             :class="[showDelete ? blurClass : '', bbClass]"
         >
-            <div class="c-header__container">
+            <div class="c-header__container mt-32">
                 <img
                     src="../static/logo.png"
                     class="app-logo w-[max(20rem,_100px)] m-auto border-none"
@@ -47,6 +47,7 @@
                     <label for="todoTitle"></label>
                     <input
                         type="text"
+                        ref="inputTitle"
                         name="todoTitle"
                         class="c-form__title-input"
                         placeholder="Add a new Todo"
@@ -217,6 +218,7 @@ export default {
                 }, // Except this one because reasons..
                 date: moment().format('YYYY[-]MM[-]DDTHH:mm'),
             }
+            this.$refs.inputTitle.focus()
         },
         onImportanceChange(e, color, num) {
             // Gets the color value from the selected importance radio button and sets the todoImportance to said color
