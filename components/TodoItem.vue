@@ -152,7 +152,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .c-todo-item--importance-green {
     @apply bg-[rgb(111,_200,_65)];
     background: linear-gradient(
