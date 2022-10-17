@@ -18,6 +18,7 @@
 export default {
     data() {
         return {
+            // Array of page objects, matching the files in pages folder
             pages: [
                 { name: 'home', link: '' },
                 { name: 'archive', link: 'archive' },
