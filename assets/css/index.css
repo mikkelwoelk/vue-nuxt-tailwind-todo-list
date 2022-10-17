@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --clr-primary: #cfe0c3;
+    --clr-secondary: #9ec1a3;
+    --clr-text: #ffffff;
+    --clr-text-placeholder: #e6e6e6;
+    --clr-accent-darkest: #1f363d;
+}
+
 @layer base {
     body {
         @apply flex flex-col justify-center items-center;
