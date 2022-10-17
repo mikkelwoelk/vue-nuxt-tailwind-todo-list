@@ -1,14 +1,14 @@
 <template>
-    <header class="c-header-menu fixed w-full p-4 top-0 left-0 z-50">
-        <ul
-            class="c-header-menu__container h-full flex items-center justify-center"
-        >
+    <header class="c-header-menu fixed w-full top-0 left-0">
+        <ul class="c-header-menu__container flex items-center justify-center">
             <li
                 v-for="page in pages"
                 :key="page.name"
-                class="p-4 mx-4 text-3xl text-white capitalize"
+                class="relative text-3xl mx-2 p-4 text-white capitalize leading-none after:transition-all after:ease-in-out after:duration-300 after:content-[''] after:w-0 after:h-2 after:rounded-full after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 hover:after:bg-white hover:after:w-full"
             >
-                <nuxt-link :to="`/${page.link}`"> {{ page.name }} </nuxt-link>
+                <nuxt-link :to="`/${page.link}`" class="p-4">
+                    {{ page.name }}
+                </nuxt-link>
             </li>
         </ul>
     </header>
