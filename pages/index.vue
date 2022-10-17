@@ -171,13 +171,11 @@ export default {
                 importance: { color: 'green', num: 1 }, // Value for todo importance (Defaulting to green)
                 date: moment().format('YYYY[-]MM[-]DDTHH:mm'), // Value for date picker (Sets the value to the date and time as it is right now when the page is loaded)
             },
-            todos: [
-                // Array of todo objects
-            ],
+            todos: [], // Array of todo objects
             activeClass: 'isActive', // Class style for when the submit button is active (Activates when the user types something in the todo title input)
             dateTime: '', // Empty string for storing the date and time (updateTime() updates the date/time in the date picker every minute)
-            showDelete: false,
-            deletingIndex: null,
+            showDelete: false, // Boolean for whether or not the delete prompt should show
+            deletingIndex: null, // Variable for saving the index of a to when deleting it, for later use
             bbClass: 'transition-all duration 250ms',
             blurClass: 'opacity-50 pointer-events-none blur-sm',
         }
@@ -187,7 +185,7 @@ export default {
         addTodo() {
             // Adds a new todo object to the todos array, as well as getting and setting the date/time from the date picker into the todoDate. Then resets the inputs for the next todo (except the importance)
             this.newTodo.date = moment(this.newTodo.date).fromNow() // Sets the date/time of the todo to the user selected input and shows the time till its due
-            this.newTodo.id = Math.random().toString(36).substring(2)
+            this.newTodo.id = Math.random().toString(36).substring(2) // Sets a unique id for every todo when created
             this.todos.push(this.newTodo) // Pushes the todo object into the todo array
             this.newTodo = {
                 // Resets all of the input in some way
@@ -200,14 +198,16 @@ export default {
                 date: moment().format('YYYY[-]MM[-]DDTHH:mm'),
             }
             this.saveTodo()
+            // Refocusing to the title input
             this.$refs.inputTitle.focus()
         },
         saveTodo() {
-            // Saves / updates a new todo to localStorage
+            // Saves / updates a todo to localStorage
             const parsed = JSON.stringify(this.todos)
             localStorage.setItem('todos', parsed)
         },
         toggleDeletePrompt(index) {
+            // Toggles delete prompt when clicking delete on a todo
             this.deletingIndex = index
             this.showDelete = !this.showDelete
         },
