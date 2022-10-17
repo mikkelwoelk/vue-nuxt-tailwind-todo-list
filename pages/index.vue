@@ -173,28 +173,6 @@ export default {
             },
             todos: [
                 // Array of todo objects
-                {
-                    id: '1',
-                    title: 'Make a todo list',
-                    description: 'It has to have alot of nice features',
-                    importance: { color: 'green', num: 1 },
-                    date: moment().add('4', 'weeks').fromNow(),
-                },
-                {
-                    id: '2',
-                    title: 'This is a medium todo',
-                    description: 'It has the same color as a banana',
-                    importance: { color: 'yellow', num: 2 },
-                    date: moment().add('10', 'days').fromNow(),
-                },
-                {
-                    id: '3',
-                    title: 'This is a max length todo',
-                    description:
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis convallis justo eros, a ullamcorper orci rhoncus sed. Phasellus blandit risus elit, et hendrerit ipsum tempor venenatis. Vestibulum dictum',
-                    importance: { color: 'red', num: 3 },
-                    date: moment().add('1', 'hours').fromNow(),
-                },
             ],
             activeClass: 'isActive', // Class style for when the submit button is active (Activates when the user types something in the todo title input)
             dateTime: '', // Empty string for storing the date and time (updateTime() updates the date/time in the date picker every minute)
@@ -221,7 +199,23 @@ export default {
                 }, // Except this one because reasons..
                 date: moment().format('YYYY[-]MM[-]DDTHH:mm'),
             }
+            this.saveTodo()
             this.$refs.inputTitle.focus()
+        },
+        saveTodo() {
+            // Saves / updates a new todo to localStorage
+            const parsed = JSON.stringify(this.todos)
+            localStorage.setItem('todos', parsed)
+        },
+        toggleDeletePrompt(index) {
+            this.deletingIndex = index
+            this.showDelete = !this.showDelete
+        },
+        deleteTodo() {
+            this.showDelete = false
+            // Deletes a todo by removing it from the array
+            this.todos.splice(this.deletingIndex, 1)
+            this.saveTodo()
         },
         onImportanceChange(e, color, num) {
             // Gets the color value from the selected importance radio button and sets the todoImportance to said color
@@ -247,17 +241,16 @@ export default {
                 a.importance.num <= b.importance.num ? 1 : -1
             )
         },
-        toggleDeletePrompt(index) {
-            this.deletingIndex = index
-            this.showDelete = !this.showDelete
-        },
-        deleteTodo() {
-            this.showDelete = false
-            // Deletes a todo by removing it from the array
-            this.todos.splice(this.deletingIndex, 1)
-        },
     },
-    mounted: function () {
+    mounted() {
+        // Retrieves todos from localStorage
+        if (localStorage.getItem('todos')) {
+            try {
+                this.todos = JSON.parse(localStorage.getItem('todos'))
+            } catch (e) {
+                localStorage.removeItem('todos')
+            }
+        }
         // Runs updateTime() every 10 seconds to keep the time in the date picker fairly up to date
         this.dateTime = setInterval(() => {
             this.updateTime()
