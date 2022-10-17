@@ -261,16 +261,6 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap');
-:root {
-    --clr-primary: #cfe0c3;
-    --clr-secondary: #9ec1a3;
-    --clr-text: #ffffff;
-    --clr-text-placeholder: #e6e6e6;
-    --clr-accent-light: #50ddc8;
-    --clr-accent-darker: #52c9b7;
-    --clr-accent-darkest: #1f363d;
-}
-
 html {
     font-size: 62.5%;
     scroll-behavior: smooth;
