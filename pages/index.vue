@@ -41,7 +41,10 @@
             </div>
             <div
                 class="c-form__container my-8 rounded-xl overflow-hidden max-h-[50.5px] transition-[max-height] ease-in-out duration-500"
-                :class="{ 'max-h-[278px]': newTodo.title !== '' }"
+                :class="{
+                    'max-h-[278px]':
+                        newTodo.title !== '' || newTodo.description !== '',
+                }"
             >
                 <form class="flex flex-col" @submit.prevent="addTodo">
                     <label for="todoTitle"></label>
@@ -352,7 +355,8 @@ body {
 }
 
 .c-form__submit-btn {
-    box-shadow: inset 0px 1px 8px 3px var(--clr-secondary);
+    box-shadow: inset 0px 0px 30px 0px var(--clr-secondary);
+    color: var(--clr-secondary);
 }
 
 .c-form__submit-btn.isActive {
