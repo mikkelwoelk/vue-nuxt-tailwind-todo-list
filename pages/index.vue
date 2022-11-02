@@ -168,7 +168,7 @@ export default {
     data() {
         // Stores all of the data to be used in the vue instance
         return {
-            header: 'Todo List', // Sets the innerHTML of the h1
+            header: 'ToDo List', // Sets the innerHTML of the h1
             subheader:
                 'Make a new todo! You can also add a description and choose importance.', // Sets the innerHTML of the h2
             newTodo: {
