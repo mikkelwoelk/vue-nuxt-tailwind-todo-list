@@ -1,6 +1,8 @@
 <template>
-    <header class="c-header-menu fixed w-full top-0 left-0">
-        <ul class="c-header-menu__container flex items-center justify-center">
+    <header v-if="pages" class="c-header-menu fixed w-full top-0 left-0">
+        <ul
+            class="c-header-menu__container flex items-center justify-center pt-5"
+        >
             <li
                 v-for="page in pages"
                 :key="page.name"
