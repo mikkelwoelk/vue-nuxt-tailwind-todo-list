@@ -131,7 +131,10 @@
                         Sort importance: High
                     </button>
                 </div>
-                <ul class="c-todo-list list-none flex flex-col">
+                <ul
+                    v-if="todos.length"
+                    class="c-todo-list list-none flex flex-col"
+                >
                     <transition-group
                         name="t-fade-in"
                         enter-active-class="fade-from-left"
@@ -146,6 +149,11 @@
                         </todoItem>
                     </transition-group>
                 </ul>
+                <div v-else class="flex items-center justify-center p-20">
+                    <h2 class="font-normal text-4xl">
+                        All your todos will be right here, nice and neat!
+                    </h2>
+                </div>
             </div>
         </div>
     </div>
